@@ -1,0 +1,20 @@
+
+numpy>=1.21.0,<2.0.0
+scipy>=1.7.0
+
+# Optimization (Gurobi is primary solver)
+gurobipy>=10.0.0
+pulp>=2.7.0
+
+# Data handling
+pandas>=1.3.0
+scikit-learn>=1.0.0
+
+# Utilities
+typing-extensions>=4.0.0
+tqdm>=4.62.0
+pyyaml>=6.0
+
+# Note: Gurobi requires a license (free for academic use)
+# Get license at: https://www.gurobi.com/academia/
+# If Gurobi license is not available, system will fall back to PuLP
