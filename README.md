@@ -35,8 +35,9 @@ pre-commit install
 
 
 
-### Architecture
+🏛️ Architecture
 
+text
 O-FL_rApp/
 ├── core/                          # Abstract base classes and interfaces
 │   ├── __init__.py
