@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-utils/utilities.py - Utility Functions (Object-Oriented)
+utils/utilities.py - Utility Functions
 O-FL rApp: Distributed Orchestration of Concurrent Federated MARL Tasks
 """
 

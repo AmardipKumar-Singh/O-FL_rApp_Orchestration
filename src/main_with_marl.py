@@ -2,12 +2,6 @@
 """
 main_with_marl.py - Complete O-RAN MARL Training Example
 O-FL rApp: Integrated MAPPO Training for Network Control
-
-Demonstrates:
-1. O-RAN MARL environment setup
-2. MAPPO multi-agent training
-3. Resource orchestration with MARL tasks
-4. Performance evaluation
 """
 
 import numpy as np

@@ -3,11 +3,6 @@
 training/mappo_trainer.py - Multi-Agent PPO (MAPPO) Trainer
 O-FL rApp: MARL implementation with PPO
 
-MAPPO: Multi-Agent Proximal Policy Optimization
-- Centralized training, decentralized execution
-- Each agent has own actor (policy) network
-- Shared or individual critic (value) network
-- Clipped objective for stable training
 """
 
 import numpy as np
@@ -59,15 +54,7 @@ class MAPPOAgent:
 
 
 class MAPPOTrainer(MARLTrainer):
-    """
-    Multi-Agent PPO Trainer
-
-    Implements MAPPO algorithm:
-    1. Collect trajectories from all agents
-    2. Compute advantages using GAE
-    3. Update policies using clipped PPO objective
-    4. Update value functions
-    """
+   
 
     def __init__(self, agent_ids: List[str], obs_dims: Dict[str, int],
                  action_dims: Dict[str, int], config: Optional[MAPPOConfig] = None):

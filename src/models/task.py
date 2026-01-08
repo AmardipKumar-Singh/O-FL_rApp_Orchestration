@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """
-models/task.py - Task Implementations
 O-FL rApp: Distributed Orchestration of Concurrent Federated MARL Tasks
 """
 
@@ -16,17 +15,7 @@ class FederatedMARLTask(ITask):
     def __init__(self, task_id: str, task_type: TaskType, agents: List[str],
                  requirements: ResourceRequirements, priority: float = 1.0,
                  reward_params: Optional[Dict] = None):
-        """
-        Initialize Federated MARL Task
-
-        Args:
-            task_id: Unique task identifier
-            task_type: Type of task
-            agents: List of agent IDs
-            requirements: Resource requirements
-            priority: Task priority (default 1.0)
-            reward_params: Parameters for reward computation
-        """
+        
         self._task_id = task_id
         self._task_type = task_type
         self._agents = agents

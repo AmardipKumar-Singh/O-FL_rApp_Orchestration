@@ -3,11 +3,6 @@
 environments/oran_environment.py - O-RAN MARL Environment
 O-FL rApp: Multi-Agent Environment for Network Control
 
-Implements MARL environment for O-RAN tasks:
-- Network slicing
-- Load balancing
-- Resource allocation
-- Handover management
 """
 
 import numpy as np
@@ -31,29 +26,6 @@ class ORANEnvConfig:
 
 
 class ORANNetworkEnvironment(MARLEnvironment):
-    """
-    O-RAN Multi-Agent Environment
-
-    State space (per agent/O-DU):
-    - Current PRB utilization (%)
-    - Active users count
-    - Buffer occupancy
-    - Interference level
-    - Neighbor O-DU loads (3 neighbors)
-    - Historical throughput
-    - QoS satisfaction rate
-
-    Action space (per agent):
-    - PRB allocation to users (continuous or discrete)
-    - Handover decisions (accept/reject)
-    - Power control level
-
-    Reward:
-    - System throughput
-    - QoS satisfaction
-    - Fairness (Jain's index)
-    - Energy efficiency
-    """
 
     def __init__(self, topology: ORANTopology, config: Optional[ORANEnvConfig] = None):
         self.topology = topology

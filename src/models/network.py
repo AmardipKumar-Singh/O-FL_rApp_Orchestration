@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """
-models/network.py - Network Topology Implementation
 O-FL rApp: Distributed Orchestration of Concurrent Federated MARL Tasks
 """
 

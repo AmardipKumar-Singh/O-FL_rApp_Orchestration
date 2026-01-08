@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-solvers/tsa_solver.py - Task and Slice Assignment Solver (OOP)
+solvers/tsa_solver.py - Task and Slice Assignment Solver
 O-FL rApp: Distributed Orchestration of Concurrent Federated MARL Tasks
 
-Algorithm 1: Graph-Aware Task and Slice Assignment
+Algorithm 1: Task and Slice Assignment
 """
 
 from typing import Dict, List, Tuple, Optional
@@ -38,7 +38,7 @@ class AssignmentScorer:
                      topology: INetworkTopology,
                      performance_estimates: Dict) -> float:
         """
-        Compute assignment score (Equation 28)
+        Compute assignment score
         AScore = E[R_global] - E[TotalCost] - W_QoS * E[QoS_vio]
         """
         task_id = task.get_id()
@@ -82,14 +82,7 @@ class AssignmentScorer:
 
 
 class GraphAwareTSA(IAssignmentSolver):
-    """
-    Graph-Aware Task and Slice Assignment Solver
-
-    Implements Algorithm 1 from the paper with:
-    - Topology-aware task prioritization
-    - Communication-aware agent assignment
-    - Greedy assignment with priority ordering
-    """
+    
 
     def __init__(self, w_reward: float = 1.0, w_qos: float = 1000.0):
         """
@@ -125,7 +118,7 @@ class GraphAwareTSA(IAssignmentSolver):
                                 for task in tasks 
                                 for agent in task.get_agents()}
 
-        # Phase 1: Compute priority scores (lines 5-8)
+        # Phase 1: Compute priority scores
         task_priorities = []
         for task in tasks:
             priority = self._compute_priority_score(task, topology, 
@@ -135,7 +128,7 @@ class GraphAwareTSA(IAssignmentSolver):
         # Sort by descending priority
         task_priorities.sort(key=lambda x: x[0], reverse=True)
 
-        # Phase 2: Iterative assignment (lines 10-19)
+        # Phase 2: Iterative assignment
         for priority, task in task_priorities:
             best_score = -float('inf')
             best_agent = None
@@ -171,7 +164,7 @@ class GraphAwareTSA(IAssignmentSolver):
     def _compute_priority_score(self, task: ITask, topology: INetworkTopology,
                                performance_estimates: Dict) -> float:
         """
-        Compute priority score for task (Equation 27)
+        Compute priority score for task
         PriorityScore = max over agents of assignment score
         """
         max_score = -float('inf')
@@ -189,12 +182,9 @@ class GraphAwareTSA(IAssignmentSolver):
     def validate_assignment(self, assignment: TaskAssignment, 
                           tasks: List[ITask]) -> bool:
         """
-        Validate assignment satisfies constraints (Equations 17-19)
-
-        Constraint 17: Each agent assigned to at most one task
-        Constraint 19: Task active only if has assigned agents
+        Validate assignment satisfies constraints
         """
-        # Check Constraint 17: agent uniqueness
+        # Check Constraint: agent uniqueness
         agent_counts: Dict[str, int] = {}
         for (task_id, agent), assigned in assignment.task_agent_map.items():
             if assigned:
@@ -202,7 +192,7 @@ class GraphAwareTSA(IAssignmentSolver):
                 if agent_counts[agent] > 1:
                     return False
 
-        # Check Constraint 19: active tasks have agents
+        # Check Constraint: active tasks have agents
         for task in tasks:
             task_id = task.get_id()
             has_agents = any(assignment.task_agent_map.get((task_id, a), False)

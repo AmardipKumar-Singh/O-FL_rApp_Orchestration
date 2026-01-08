@@ -3,11 +3,6 @@
 main_with_datasets.py - Complete Example with O-RAN Datasets
 O-FL rApp: Network Traffic + Cell Load Data
 
-Demonstrates:
-1. Network Traffic QoS Prediction (uRLLC task)
-2. Cell Load Balancing (eMBB task)
-3. Real federated learning training
-4. Resource orchestration with actual ML performance
 """
 
 import numpy as np
@@ -255,8 +250,8 @@ def run_combined_scenario():
     cell_dataset = CellLoadDataset(cell_config)
     cell_dataset.load_data()
 
-    print(f"  ✓ Network Traffic: {len(traffic_dataset)} samples")
-    print(f"  ✓ Cell Load: {len(cell_dataset)} samples")
+    print(f"  Network Traffic: {len(traffic_dataset)} samples")
+    print(f"  Cell Load: {len(cell_dataset)} samples")
 
     # Partition data
     print("\nStep 2: Partitioning data...")
@@ -313,8 +308,8 @@ def run_combined_scenario():
         .with_reward(200.0)
         .build())
 
-    print(f"  ✓ {task_qos.get_id()}: {task_qos.get_type().value}")
-    print(f"  ✓ {task_load.get_id()}: {task_load.get_type().value}")
+    print(f"  {task_qos.get_id()}: {task_qos.get_type().value}")
+    print(f"  {task_load.get_id()}: {task_load.get_type().value}")
 
     # Configure orchestrator
     print("\nStep 5: Initializing orchestrator for multi-task...")

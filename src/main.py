@@ -2,10 +2,6 @@
 """
 main.py - Simulation-Based Entry Point
 O-FL rApp: Distributed Orchestration Framework
-
-This is the main entry point for simulation-based experiments.
-No real FL training or MARL - just simulated performance metrics.
-Fast execution for algorithm validation and comparison.
 """
 
 import numpy as np
@@ -171,7 +167,7 @@ def run_baseline_comparison(tasks, topology):
     print("BASELINE ALGORITHMS COMPARISON")
     print(f"{'='*70}\n")
 
-    # Import tasks for each baseline (they modify task states)
+    # Import tasks for each baseline
     from copy import deepcopy
 
     baseline_results = compare_baselines(

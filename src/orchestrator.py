@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """
-orchestrator.py - Main O-FL rApp Orchestrator (Object-Oriented)
 O-FL rApp: Distributed Orchestration of Concurrent Federated MARL Tasks
-
-Implements Algorithm 2: Distributed FL Execution with iterative coordination
 """
 
 from typing import Dict, List, Optional
@@ -132,7 +129,7 @@ class OFLrAppOrchestrator(IOrchestrator):
         return aggregate_metrics
 
     def _execute_fl_tasks(self) -> Dict[str, PerformanceMetrics]:
-        """Simulate distributed FL task execution (Algorithm 2)"""
+    
         task_metrics = {}
 
         for task in self.tasks:
@@ -179,7 +176,7 @@ class OFLrAppOrchestrator(IOrchestrator):
 
     def _simulate_task_execution(self, task: ITask, 
                                  allocation: ResourceAllocation) -> Dict:
-        """Simulate task execution and compute performance"""
+        
         requirements = task.get_requirements()
 
         # Compute utilities

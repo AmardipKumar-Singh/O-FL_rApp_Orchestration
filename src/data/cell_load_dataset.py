@@ -1,13 +1,7 @@
 #!/usr/bin/env python3
 """
 data/cell_load_dataset.py - Cell Load Data for Load Balancing
-O-FL rApp: O-RAN Dataset Implementation
-
-Dataset characteristics:
-- Cell-level metrics from O-DU base stations
-- Features: Active users, PRB utilization, handovers, interference, etc.
-- Labels: Load balancing action (0: No action, 1: Offload to neighbor, 2: Accept handover)
-- Use case: Predict optimal load balancing decisions
+O-FL rApp: O-RAN Dataset
 """
 
 import numpy as np

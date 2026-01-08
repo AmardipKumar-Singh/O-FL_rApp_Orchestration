@@ -2,8 +2,6 @@
 """
 core/base.py - Abstract Base Classes and Interfaces
 O-FL rApp: Distributed Orchestration of Concurrent Federated MARL Tasks
-
-Defines the core abstractions for modular, extensible architecture
 """
 
 from abc import ABC, abstractmethod

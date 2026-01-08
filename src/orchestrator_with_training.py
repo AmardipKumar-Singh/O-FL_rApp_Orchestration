@@ -22,12 +22,6 @@ class IntegratedConfig:
 
 
 class IntegratedOFLrApp(OFLrAppOrchestrator):
-    """
-    Integrated O-FL rApp with Real Federated Learning Training
-
-    Extends base orchestrator to train actual ML models on O-RAN datasets
-    during task execution phase.
-    """
 
     def __init__(self, config: IntegratedConfig):
         super().__init__(config.orchestration)
@@ -62,7 +56,7 @@ class IntegratedOFLrApp(OFLrAppOrchestrator):
                     input_dim, output_dim, self.training_config
                 )
 
-                print(f"✓ Registered dataset '{dataset.name}' for task {task_id}")
+                print(f"Registered dataset '{dataset.name}' for task {task_id}")
                 print(f"  Input dim: {input_dim}, Output dim: {output_dim}")
 
     def _execute_fl_tasks(self) -> Dict[str, PerformanceMetrics]:
@@ -153,7 +147,7 @@ class IntegratedOFLrApp(OFLrAppOrchestrator):
         return metrics
 
     def _execute_simulated_fl(self, task: ITask, allocation) -> PerformanceMetrics:
-        """Execute simulated FL (original behavior)"""
+    
         actual_performance = self._simulate_task_execution(task, allocation)
 
         # Compute reward

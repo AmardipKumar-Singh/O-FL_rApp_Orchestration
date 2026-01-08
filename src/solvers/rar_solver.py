@@ -3,7 +3,6 @@
 solvers/rar_solver.py - Resource Allocation and Routing Solver (OOP)
 O-FL rApp: Distributed Orchestration of Concurrent Federated MARL Tasks
 
-Implements RAR sub-problem with MILP optimization
 """
 
 from typing import Dict, List, Optional
@@ -20,14 +19,7 @@ except ImportError:
 
 
 class MILPResourceSolver(IResourceSolver):
-    """
-    MILP-based Resource Allocation and Routing Solver
-
-    Solves Equation 34 with:
-    - Piecewise linear approximation for utilities
-    - McCormick envelope constraints
-    - Link capacity and compute constraints
-    """
+    
 
     def __init__(self, cpu_ric: float = 100, cpu_du: float = 80,
                  w_reward: float = 1.0, w_qos: float = 1000.0,
@@ -52,7 +44,7 @@ class MILPResourceSolver(IResourceSolver):
              topology: INetworkTopology, 
              performance_estimates: Dict) -> Dict[str, ResourceAllocation]:
         """
-        Solve resource allocation problem (Equation 34)
+        Solve resource allocation problem
         """
         if not GUROBI_AVAILABLE:
             return self._solve_heuristic(tasks, assignment, topology)
